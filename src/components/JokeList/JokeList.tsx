@@ -1,3 +1,5 @@
+import { useCallback } from "react";
+
 import { Box } from "@mui/material";
 
 import { useAppDispatch } from "../../app/hooks";
@@ -21,6 +23,18 @@ type JokeListProps = {
 
 const JokeList = ({ jokes, onLoadMore, canLoadMore }: JokeListProps) => {
   const dispatch = useAppDispatch();
+
+    const handleAdd = useCallback((joke: Joke) => {
+    dispatch(addJoke(joke));
+  }, [dispatch]);
+
+  const handleDelete = useCallback((id: number) => {
+    dispatch(deleteJoke(id));
+  }, [dispatch]);
+
+  const handleRefresh = useCallback((id: number, newJoke: Joke) => {
+    dispatch(replaceJoke({ id, newJoke }));
+  }, [dispatch]);
 
   return (
     <>
@@ -46,12 +60,12 @@ const JokeList = ({ jokes, onLoadMore, canLoadMore }: JokeListProps) => {
                 <JokeActions
                   onAdd={async () => {
                     const newJoke = await fetchRandomJoke();
-                    dispatch(addJoke(newJoke));
+                    handleAdd(newJoke);
                   }}
-                  onDelete={() => dispatch(deleteJoke(joke.id))}
+                  onDelete={() => handleDelete(joke.id)}
                   onRefresh={async () => {
                     const newJoke = await fetchRandomJoke();
-                    dispatch(replaceJoke({ id: joke.id, newJoke }));
+                    handleRefresh(joke.id, newJoke);
                   }}
                 />
               }

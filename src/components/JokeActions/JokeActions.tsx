@@ -1,3 +1,4 @@
+import React from "react";
 import { Stack } from "@mui/material";
 
 import BaseButton from "../../ui/BaseButton";
@@ -16,4 +17,4 @@ const JokeActions = ({ onAdd, onDelete, onRefresh }: JokeActionsProps) => (
   </Stack>
 );
 
-export default JokeActions;
+export default React.memo(JokeActions);

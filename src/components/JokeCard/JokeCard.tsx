@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import React, { ReactNode } from "react";
 
 import { Card, Typography, Box } from "@mui/material";
 
@@ -87,4 +87,4 @@ const JokeCard = ({
   );
 };
 
-export default JokeCard;
+export default React.memo(JokeCard);
