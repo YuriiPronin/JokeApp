@@ -37,6 +37,7 @@ Fully compliant with test task requirements and extended with production-level s
 - Custom fetch layer with interceptor for centralized error logic
 - Styled via MUI with reusable components like `BaseButton`, `JokeCard`, `JokeActions`
 - Snackbar placed top-center for maximum visibility
+- Performance-conscious components: used `React.memo`, `useCallback` in key places (`JokeCard`, `JokeActions`, and handler functions) to prevent unnecessary re-renders and ensure scalability
 
 ---
 
@@ -65,7 +66,7 @@ npm start
 - Use `RTK Query` if API logic gets more complex
 - Add filters by joke type or keyword
 - Accessibility improvements (ARIA)
- _Note: I'm still learning best practices in accessibility. This is one of the areas I plan to grow in._
+  _Note: I'm still learning best practices in accessibility. This is one of the areas I plan to grow in._
 
 ---
 
