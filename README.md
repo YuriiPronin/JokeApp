@@ -1,46 +1,72 @@
-# Getting Started with Create React App
+# Jokes App 😄
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A frontend application that displays a list of jokes with the ability to add, delete, refresh and load more — built with React, Redux Toolkit and MUI.  
+Fully compliant with test task requirements and extended with production-level structure, error handling, and architecture best practices.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🛠️ Stack
 
-### `npm start`
+- **React (TypeScript)**
+- **Redux Toolkit**
+- **MUI (Material UI)**
+- **localStorage**
+- **Custom Fetch API with Interceptors**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+---
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## ⚙️ Features
 
-### `npm test`
+- 🔄 Load initial jokes (max 10, adjusted if user-added exist)
+- ➕ Add a new unique joke (stored in localStorage)
+- ❌ Delete jokes (also clears from localStorage if user-added)
+- ♻️ Refresh a single joke (replaces with a unique one)
+- 📦 Load more (fetch 10 more jokes, no duplication, not saved in LS)
+- ⚠️ Global error handling (with user-friendly `Snackbar`)
+- ✅ Responsive layout with MUI
+- 🧼 Clean architecture with separation of concerns
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## 🧠 Architectural Decisions
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- `Redux Toolkit` used for both global state and user-added joke tracking
+- LocalStorage integrated manually via `store.subscribe()` + slice segregation
+- `addedJokes` are stored and replayed on app load
+- `addFromApi` vs `addJoke` separate logic for precise control over persistence
+- Custom fetch layer with interceptor for centralized error logic
+- Styled via MUI with reusable components like `BaseButton`, `JokeCard`, `JokeActions`
+- Snackbar placed top-center for maximum visibility
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🚀 Getting Started
 
-### `npm run eject`
+### 1. Install dependencies
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```bash
+npm install
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 2. Start the development server
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```bash
+npm start
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+> Open [http://localhost:3000](http://localhost:3000) to view the app in the browser.
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 💡 Possible Improvements
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Add unit tests (e.g. for reducers or API utils)
+- Persist theme mode (dark/light)
+- Use `RTK Query` if API logic gets more complex
+- Add filters by joke type or keyword
+- Accessibility improvements (ARIA)
+ _Note: I'm still learning best practices in accessibility. This is one of the areas I plan to grow in._
+
+---
+
+Made with ❤️ and attention to detail by **Yurii Pronin**
